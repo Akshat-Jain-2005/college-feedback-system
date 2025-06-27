@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Submit Feedback{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Course Feedback Form</h2>
+    <form method="POST">
+        <label for="course_id">Course ID:</label>
+        <input type="text" name="course_id" required>
+
+        <label>Clarity:</label>
+        <input type="number" name="q1" min="1" max="5" required>
+
+        <label>Communication:</label>
+        <input type="number" name="q2" min="1" max="5" required>
+
+        <label>Engagement:</label>
+        <input type="number" name="q3" min="1" max="5" required>
+
+        <label>Relevance:</label>
+        <input type="number" name="q4" min="1" max="5" required>
+
+        <label>Practical Use:</label>
+        <input type="number" name="q5" min="1" max="5" required>
+
+        <label>Instructor Support:</label>
+        <input type="number" name="q6" min="1" max="5" required>
+
+        <label>Comments:</label>
+        <textarea name="review" rows="4" cols="50"></textarea>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <input type="submit" value="Submit" style="padding: 10px 20px; font-size: 16px;">
+        </div>
+    </form>
+</div>
+{% endblock %}

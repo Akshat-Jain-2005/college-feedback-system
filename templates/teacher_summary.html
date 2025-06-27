@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Teacher Feedback Summary{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2 style="text-align: center;">Average Feedback Summary</h2>
+
+    {% if summaries %}
+        <div style="overflow-x: auto;">
+            <table border="1" cellspacing="0" cellpadding="10" style="margin: auto; width: 90%; text-align: center; font-size: 16px;">
+                <thead style="background-color: #f2f2f2;">
+                    <tr>
+                        <th>Course ID</th>
+                        <th>Clarity</th>
+                        <th>Communication</th>
+                        <th>Engagement</th>
+                        <th>Relevance</th>
+                        <th>Practical Use</th>
+                        <th>Instructor Support</th>
+                        <th>Total Reviews</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in summaries %}
+                    <tr>
+                        <td>{{ row.course_id }}</td>
+                        <td>{{ "%.2f"|format(row.avg_q1) }}</td>
+                        <td>{{ "%.2f"|format(row.avg_q2) }}</td>
+                        <td>{{ "%.2f"|format(row.avg_q3) }}</td>
+                        <td>{{ "%.2f"|format(row.avg_q4) }}</td>
+                        <td>{{ "%.2f"|format(row.avg_q5) }}</td>
+                        <td>{{ "%.2f"|format(row.avg_q6) }}</td>
+                        <td>{{ row.total_reviews }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p style="text-align: center;">No feedback submitted yet.</p>
+    {% endif %}
+
+    <!-- Centered Return Button -->
+    <div style="display: flex; justify-content: center; margin-top: 30px;">
+        <a href="{{ url_for('routes_bp.login') }}">
+            <button style="padding: 10px 25px; font-size: 16px;">Return to Home</button>
+        </a>
+    </div>
+</div>
+{% endblock %}
